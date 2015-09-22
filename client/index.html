@@ -9,14 +9,27 @@
     </style>
   </head>
   <body>
-    <div ng-controller="MainCtrl as main" class="container">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a href="#" class="navbar-brand">Search your Reps</a>
-          </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">Search your Reps</a>
         </div>
-      </nav>
+      </div>
+    </nav>
+    <div ng-controller="MainCtrl as main" class="container">
+
+      <div class="radio">
+          <label>
+            <input type="radio" ng-model="main.congressType" value="reps">
+            Representative
+          </label>
+      </div>
+      <div class="radio">
+          <label>
+            <input type="radio" ng-model="main.congressType" value="sens">
+            Senators
+          </label>
+      </div>
       <!-- Zip Code Form -->
       <form ng-submit="main.searchByZip(main.inputs.zip)" class="form-inline">
         <div class="form-group">
@@ -49,8 +62,8 @@
       <form ng-submit="main.searchSensByName(main.inputs.sensLastName)" class="form-inline">
 
         <div class="form-group">
-          <label for="rep-last-name">Search Senator By Last Name:</label>
-          <input id="rep-last-name" class="form-control" type="string" ng-model="main.inputs.sensLastName" />
+          <label for="sen-last-name">Search Senator By Last Name:</label>
+          <input id="sen-last-name" class="form-control" type="string" ng-model="main.inputs.sensLastName" />
         </div>
 
         <button class="btn btn-info" type="submit">Submit</button>
@@ -59,8 +72,8 @@
       <form ng-submit="main.searchSensByState(main.inputs.sensState)" class="form-inline">
 
         <div class="form-group">
-          <label for="rep-last-name">Search Senator By State:</label>
-          <input id="rep-last-name" class="form-control" type="string" ng-model="main.inputs.sensState" />
+          <label for="sen-state">Search Senator By State:</label>
+          <input id="sen-state" class="form-control" type="string" ng-model="main.inputs.sensState" />
         </div>
 
         <button class="btn btn-info" type="submit">Submit</button>
