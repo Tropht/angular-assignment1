@@ -11,28 +11,36 @@ angular
     main.reps = [];
     main.congressType = 'reps';
 
+    main.loading = false;
+
     main.apis = [
       {
         label: 'Zip',
         method: function (zip){
+          main.loading = true;
           reps('all', 'zip', zip).then(function (data){
             main.reps = data;
+            main.loading = false;
           });
         }
       },
       {
         label: 'Last Name',
         method: function (name) {
+          main.loading = true;
           reps(main.congressType, 'name', name).then(function (data){
             main.reps = data;
+            main.loading = false;
           });
         }
       },
       {
         label: 'State',
         method: function (state){
+          main.loading = true;
           reps(main.congressType, 'state', state).then(function (data){
             main.reps = data;
+            main.loading = false;
           });
         }
       }
@@ -48,6 +56,8 @@ angular
   .module('repsService', [])
   .factory('reps', function ($http) {
     var host = 'http://dgm-representatives.herokuapp.com';
+
+    var loading = false;
 /*
 *@function search
 *@param {String} type - can be "all", "reps", "sens"
@@ -62,7 +72,7 @@ function search(type, criteria, query){
     })
 }
 
-  return search;
 
+return search;
 
-  });
+});
